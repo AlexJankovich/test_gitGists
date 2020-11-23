@@ -76,28 +76,25 @@ const GistList: React.FC<GistListProps> = () => {
       ) : (
         <Grid item xs={12}>
           <Grid container justify="center" spacing={2}>
-            {isError ? (
-              <ErrorMessage isError={isError} />
-            ) : (
-              <>
-                {gists.map((gist) => (
-                  <Grid key={gist.id} item>
-                    <Gist data={gist} />
-                  </Grid>
-                ))}
-                <Grid container justify="center" style={{ padding: 24 }}>
-                  <Pagination
-                    count={3000 / inPage}
-                    page={currentPage}
-                    onChange={handleChange}
-                    siblingCount={1}
-                    variant="outlined"
-                    shape="rounded"
-                    disabled={isLoading}
-                  />
+            {isError && <ErrorMessage isError={isError} />}
+            <>
+              {gists.map((gist) => (
+                <Grid key={gist.id} item>
+                  <Gist data={gist} />
                 </Grid>
-              </>
-            )}
+              ))}
+              <Grid container justify="center" style={{ padding: 24 }}>
+                <Pagination
+                  count={3000 / inPage}
+                  page={currentPage}
+                  onChange={handleChange}
+                  siblingCount={1}
+                  variant="outlined"
+                  shape="rounded"
+                  disabled={isLoading}
+                />
+              </Grid>
+            </>
           </Grid>
         </Grid>
       )}

@@ -79,28 +79,25 @@ const OrgsList: React.FC<OrgsListProps> = () => {
       ) : (
         <Grid item xs={12}>
           <Grid container justify="center" spacing={2}>
-            {isError ? (
-              <ErrorMessage isError={isError} />
-            ) : (
-              <>
-                {orgs.map((org) => (
-                  <Grid key={org.id} item>
-                    <Org data={org} />
-                  </Grid>
-                ))}
-                <Grid container justify="center" style={{ padding: 24 }}>
-                  <Pagination
-                    count={3000 / inPage}
-                    page={currentPage}
-                    onChange={handleChange}
-                    siblingCount={1}
-                    variant="outlined"
-                    shape="rounded"
-                    disabled={isLoading}
-                  />
+            {isError && <ErrorMessage isError={isError} />}
+            <>
+              {orgs.map((org) => (
+                <Grid key={org.id} item>
+                  <Org data={org} />
                 </Grid>
-              </>
-            )}
+              ))}
+              <Grid container justify="center" style={{ padding: 24 }}>
+                <Pagination
+                  count={3000 / inPage}
+                  page={currentPage}
+                  onChange={handleChange}
+                  siblingCount={1}
+                  variant="outlined"
+                  shape="rounded"
+                  disabled={isLoading}
+                />
+              </Grid>
+            </>
           </Grid>
         </Grid>
       )}

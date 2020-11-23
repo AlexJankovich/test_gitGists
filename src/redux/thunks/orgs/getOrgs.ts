@@ -1,7 +1,4 @@
-import {
-  setOrgs,
-  setOrgsError,
-} from 'src/redux/slices/orgs';
+import { setOrgs, setOrgsError } from 'src/redux/slices/orgs';
 import { AppThunk } from 'src/redux/Store';
 import { GITHUB_API } from '../config';
 
